@@ -18,8 +18,15 @@ public class FirstTest {
     @Test
     public void test(){
         System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
-
-        WebDriver driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("start-maximized"); // open Browser in maximized mode
+        options.addArguments("disable-infobars"); // disabling infobars
+        options.addArguments("--disable-extensions"); // disabling extensions
+        options.addArguments("--disable-gpu"); // applicable to windows os only
+        options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+        options.addArguments("--no-sandbox"); // Bypass OS security model
+        WebDriver driver = new ChromeDriver(options);
+        //WebDriver driver = new ChromeDriver();
 
         driver.get("https://stackoverflow.com/questions/18674092/how-to-implement-chromedriver-in-selenium-in-linux-platform");
         Assert.assertEquals(driver.getTitle(),"webdriver - How to implement chromedriver in selenium in Linux platform - Stack Overflow");
