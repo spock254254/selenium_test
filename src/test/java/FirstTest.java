@@ -30,5 +30,9 @@ public class FirstTest {
         driver.close();
         driver.quit();
     }
+    @Test
+    public void test_withError(){
+        Assert.assertEquals("correct","wrong");
+    }
 
 }
